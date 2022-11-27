@@ -12,6 +12,6 @@ Instructions to Edit this site:
 -->
 
 # Life Bottle Productions
-Welcome!  Join us on [Discord](https://discord.com/invite/NUvvgUtdXW).
+true project on [Discord](https://discord.com/invite/NUvvgUtdXW).
 
-More announcements, coming soon™.
+please go on [the real repo](https://github.com/lifebottle/lifebottle.github.io). this is a testing one
