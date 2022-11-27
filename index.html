@@ -78,6 +78,47 @@
       loadSidebar: true,
       sidebarDisplayLevel: 1,
 
+      plugins: [
+            function docsifyMetaTagsTest(hook, vm) {
+              hook.beforeEach(function (markdown) {
+                const hasFrontMatter = Boolean(
+                  $docsify.frontMatter.installed && vm.frontmatter
+                );
+
+                if (!hasFrontMatter) {
+                  return;
+                }
+
+                const metaTags = Object.entries(vm.frontmatter);
+                const reIsMetaTag = /^meta-/;
+
+                metaTags.forEach(([key, val]) => {
+                  if (reIsMetaTag.test(key)) {
+                    const attr = key.replace(reIsMetaTag, "");
+                    const existingTag = document.querySelector(`meta[${attr}]`);
+                    const metaHTML = `<meta ${attr}="${val}" />`;
+
+                    if (existingTag) {
+                      existingTag.setAttribute(attr, val);
+
+                      console.log(`Update: ${metaHTML}`);
+                    } else {
+                      const appendAfterElm = document.querySelector(
+                        "head > meta:last-of-type, head > *:last-child"
+                      );
+
+                      appendAfterElm.insertAdjacentHTML("afterend", metaHTML);
+
+                      console.log(`Append: ${metaHTML}`);
+                    }
+                  }
+                });
+
+                return markdown;
+              });
+            }
+          ]
+
       markdown: {
         renderer: {
           code: function (code, lang) {
@@ -110,46 +151,7 @@
         cssClass: 'docsify-edit-link m-0'
       }
     }
-    plugins: [
-          function docsifyMetaTagsTest(hook, vm) {
-            hook.beforeEach(function (markdown) {
-              const hasFrontMatter = Boolean(
-                $docsify.frontMatter.installed && vm.frontmatter
-              );
 
-              if (!hasFrontMatter) {
-                return;
-              }
-
-              const metaTags = Object.entries(vm.frontmatter);
-              const reIsMetaTag = /^meta-/;
-
-              metaTags.forEach(([key, val]) => {
-                if (reIsMetaTag.test(key)) {
-                  const attr = key.replace(reIsMetaTag, "");
-                  const existingTag = document.querySelector(`meta[${attr}]`);
-                  const metaHTML = `<meta ${attr}="${val}" />`;
-
-                  if (existingTag) {
-                    existingTag.setAttribute(attr, val);
-
-                    console.log(`Update: ${metaHTML}`);
-                  } else {
-                    const appendAfterElm = document.querySelector(
-                      "head > meta:last-of-type, head > *:last-child"
-                    );
-
-                    appendAfterElm.insertAdjacentHTML("afterend", metaHTML);
-
-                    console.log(`Append: ${metaHTML}`);
-                  }
-                }
-              });
-
-              return markdown;
-            });
-          }
-        ]
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
