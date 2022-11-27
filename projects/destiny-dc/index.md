@@ -1,7 +1,8 @@
+---
 meta-title: "Site title: Page 1"
 meta-description: The world hello in English
 meta-twitter-image: "/assets/coverpage/img/coverny.png"
-
+---
 
 # Tales of Destiny DC
 This project started on December 13, 2020.
