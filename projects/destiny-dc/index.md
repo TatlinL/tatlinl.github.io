@@ -1,14 +1,8 @@
-<meta property="og:title" content="Destiny DC" /> <!-- clickable title link -->
-<meta property="og:site_name" content="Life Bottle" /> <!-- Top line before clickable link giving a "site name" -->
-<meta property="og:description" content="DDC project" /> <!-- page description -->
-<meta name="theme-color" content="#f7f7f7" /><!-- small little colorbox vertical line on the side -->
-<!-- PICK ONE -->
-<!-- <meta property='og:video' content='https://www.youtube.com/v/yOZFyjv8s5g' /> -->  <!-- (youtube) one way to show a video -->
-<!-- <meta property='og:url' content='https://www.youtube.com/watch?v=yOZFyjv8s5g' /> --> <!-- (youtube) the other way -->
-<!-- <meta property='og:video' content='/img/stahn_falling_into_a_hole.mp4' /> --> <!-- the local way -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lifebottle.github.io/assets/coverpage/img/coverxmas.jpg"> <!-- image preview -->
-
+<script>
+$(document).ready(function(){
+    $('meta[property=og:title]').attr('content', 'new Meta Description here');
+});
+</script>
 
 # Tales of Destiny DC
 This project started on December 13, 2020.
